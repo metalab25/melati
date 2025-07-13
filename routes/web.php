@@ -25,13 +25,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/data-tamu', [BukuTamuController::class, 'index'])->name('data-tamu.index');
     Route::get('/data-tamu/create', [BukuTamuController::class, 'create'])->name('data-tamu.create');
+    Route::delete('/data-tamu/{buku_tamu}', [BukuTamuController::class, 'destroy'])->name('data-tamu.delete');
     Route::post('/data-tamu', [BukuTamuController::class, 'storeAdmin'])->name('data-tamu.storeAdmin');
     Route::post('/data-tamu/update-status/{id}', [BukuTamuController::class, 'updateStatus'])->name('buku-tamu.update-status');
     Route::get('/data-tamu/cetak', [BukuTamuController::class, 'cetak'])->name('buku-tamu.cetak');
     Route::get('/laporan-kunjungan', [LaporanKunjunganController::class, 'index'])->name('laporan.index');
     Route::get('/laporan-kunjungan/cetak', [LaporanKunjunganController::class, 'cetak'])->name('laporan-kunjungan.cetak');
     Route::resource('/staf', StafController::class);
-
 });
 
 require __DIR__ . '/auth.php';

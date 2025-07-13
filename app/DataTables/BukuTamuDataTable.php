@@ -43,7 +43,7 @@ class BukuTamuDataTable extends DataTable
 
     public function query(BukuTamu $model): QueryBuilder
     {
-        return $model->newQuery()->with('staf')->orderBy('created_at');
+        return $model->newQuery()->with('staf')->latest()->whereDate('created_at', Carbon::today());
     }
 
     public function html(): HtmlBuilder

@@ -18,27 +18,32 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <img src="{{ asset('assets/img/logo_simelati.png') }}" class="user-image rounded-circle shadow"
                         alt="User Image" />
-                    <span class="d-none d-md-inline">Alexander Pierce</span>
+                    <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <li class="user-header text-bg-primary">
                         <img src="{{ asset('assets/img/logo_simelati.png') }}" class="rounded-circle shadow"
                             alt="User Image" />
                         <p>
-                            Alexander Pierce - Web Developer
-                            <small>Member since Nov. 2023</small>
+                            {{ Auth::user()->name }}
                         </p>
                     </li>
-                    <li class="user-body">
-                        <div class="row">
-                            <div class="col-4 text-center"><a href="#">Followers</a></div>
-                            <div class="col-4 text-center"><a href="#">Sales</a></div>
-                            <div class="col-4 text-center"><a href="#">Friends</a></div>
-                        </div>
-                    </li>
                     <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                        <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+                        <a href="#" class="btn btn-warning">Ganti Password</a>
+                        <a href="{{ route('logout') }}" class="btn btn-danger float-end"
+                            onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            Sign out
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Sign Out') }}
+                            </x-dropdown-link>
+                        </form>
                     </li>
                 </ul>
             </li>

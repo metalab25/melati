@@ -231,7 +231,12 @@ class BukuTamuController extends Controller
 
     public function destroy(BukuTamu $bukuTamu)
     {
-        //
+        $bukuTamu->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Delete Data Tamu Successfully.',
+        ]);
     }
 
     protected function sendFonnteWhatsApp(Staf $staf, BukuTamu $bukuTamu)
