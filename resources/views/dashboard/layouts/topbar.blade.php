@@ -16,29 +16,28 @@
             </li>
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <img src="{{ asset('assets/img/logo_simelati.png') }}" class="user-image rounded-circle shadow"
+                    <img src="{{ asset('assets/img/logo_simelati.png') }}" class="shadow user-image rounded-circle"
                         alt="User Image" />
                     <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <li class="user-header text-bg-primary">
-                        <img src="{{ asset('assets/img/logo_simelati.png') }}" class="rounded-circle shadow"
+                        <img src="{{ asset('assets/img/logo_simelati.png') }}" class="shadow rounded-circle"
                             alt="User Image" />
                         <p>
                             {{ Auth::user()->name }}
                         </p>
                     </li>
                     <li class="user-footer">
-                        <a href="#" class="btn btn-warning">Ganti Password</a>
-                        <a href="{{ route('logout') }}" class="btn btn-danger float-end"
-                            onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                            Sign out
+                        {{-- <a href="#" class="btn btn-warning">Ganti Password</a> --}}
+                        <a href="{{ route('password.change') }}" class="py-2 btn btn-warning btn-sm float-start">
+                            Ganti Password
                         </a>
+
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
+                            <x-dropdown-link :href="route('logout')" class="py-1 btn btn-danger btn-sm float-end"
                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Sign Out') }}
