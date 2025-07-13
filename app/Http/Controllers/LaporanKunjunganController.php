@@ -10,7 +10,7 @@ class LaporanKunjunganController extends Controller
 {
     public function index()
     {
-        $laporanKunjungan = BukuTamu::latest()->paginate(10);
+        $laporanKunjungan = BukuTamu::latest()->paginate(5);
 
         return view('dashboard.laporan.index', [
             'title' => 'Laporan Kunjungan',

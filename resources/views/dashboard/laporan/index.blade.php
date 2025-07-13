@@ -19,6 +19,7 @@
         </div>
     </div>
     <div class="mb-3 card">
+
         <div class="card-body">
             <div class="table-responsive table-shadow rounded-3">
                 <table class="table mb-0 table-striped table-bordered justify-content-center">
@@ -90,6 +91,9 @@
             </div>
         </div>
     </div>
+    <div class="mt-3 mb-0 float-end">
+        {{ $laporanKunjungan->links() }}
+    </div>
 
     <div class="modal fade" id="modalAction" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="modalActionLabel" aria-hidden="true">
@@ -134,35 +138,35 @@
     </div>
 
     <div class="modal fade" id="modalFilterCetak" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="modalFilterCetakLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalFilterCetakLabel">Filter Cetak Laporan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formFilterCetak">
-                    <input type="hidden" id="jenisCetak" name="jenisCetak" value="bulanan">
+        aria-labelledby="modalFilterCetakLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalFilterCetakLabel">Filter Cetak Laporan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formFilterCetak">
+                        <input type="hidden" id="jenisCetak" name="jenisCetak" value="bulanan">
 
-                    <div class="mb-3" id="bulanField">
-                        <label for="bulan" class="form-label">Pilih Bulan</label>
-                        <input type="month" class="form-control" id="bulan" name="bulan" required>
-                    </div>
+                        <div class="mb-3" id="bulanField">
+                            <label for="bulan" class="form-label">Pilih Bulan</label>
+                            <input type="month" class="form-control" id="bulan" name="bulan" required>
+                        </div>
 
-                    <div class="mb-3 d-none" id="mingguField">
-                        <label for="minggu" class="form-label">Pilih Minggu</label>
-                        <input type="week" class="form-control" id="minggu" name="minggu">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-primary" id="btnCetak">Cetak</button>
+                        <div class="mb-3 d-none" id="mingguField">
+                            <label for="minggu" class="form-label">Pilih Minggu</label>
+                            <input type="week" class="form-control" id="minggu" name="minggu">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary" id="btnCetak">Cetak</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @push('script')
@@ -172,71 +176,71 @@
         });
 
         $(function() {
-    $('.btn-cetak').on('click', function() {
-        const jenisCetak = $(this).data('jenis');
-        const modalCetak = new bootstrap.Modal($('#modalFilterCetak'));
+            $('.btn-cetak').on('click', function() {
+                const jenisCetak = $(this).data('jenis');
+                const modalCetak = new bootstrap.Modal($('#modalFilterCetak'));
 
-        // Reset form
-        $('#formFilterCetak')[0].reset();
-        $('#jenisCetak').val(jenisCetak);
+                // Reset form
+                $('#formFilterCetak')[0].reset();
+                $('#jenisCetak').val(jenisCetak);
 
-        if (jenisCetak === 'bulanan') {
-            $('#bulanField').removeClass('d-none');
-            $('#mingguField').addClass('d-none');
-            $('#bulan').val(new Date().toISOString().slice(0, 7));
-        } else {
-            $('#mingguField').removeClass('d-none');
-            $('#bulanField').addClass('d-none');
+                if (jenisCetak === 'bulanan') {
+                    $('#bulanField').removeClass('d-none');
+                    $('#mingguField').addClass('d-none');
+                    $('#bulan').val(new Date().toISOString().slice(0, 7));
+                } else {
+                    $('#mingguField').removeClass('d-none');
+                    $('#bulanField').addClass('d-none');
 
-            // Set default to current week
-            const today = new Date();
-            const firstDay = new Date(today.setDate(today.getDate() - today.getDay()));
-            const formattedDate = formatDateForWeekInput(firstDay);
-            $('#minggu').val(formattedDate);
-        }
+                    // Set default to current week
+                    const today = new Date();
+                    const firstDay = new Date(today.setDate(today.getDate() - today.getDay()));
+                    const formattedDate = formatDateForWeekInput(firstDay);
+                    $('#minggu').val(formattedDate);
+                }
 
-        modalCetak.show();
-    });
+                modalCetak.show();
+            });
 
-    $('#btnCetak').on('click', function() {
-        const jenisCetak = $('#jenisCetak').val();
-        let url = "{{ route('laporan-kunjungan.cetak') }}";
+            $('#btnCetak').on('click', function() {
+                const jenisCetak = $('#jenisCetak').val();
+                let url = "{{ route('laporan-kunjungan.cetak') }}";
 
-        if (jenisCetak === 'bulanan') {
-            const bulan = $('#bulan').val();
-            if (!bulan) {
-                alert('Silakan pilih bulan terlebih dahulu');
-                return;
+                if (jenisCetak === 'bulanan') {
+                    const bulan = $('#bulan').val();
+                    if (!bulan) {
+                        alert('Silakan pilih bulan terlebih dahulu');
+                        return;
+                    }
+                    url += `?jenis=bulanan&bulan=${bulan}`;
+                } else {
+                    const minggu = $('#minggu').val();
+                    if (!minggu) {
+                        alert('Silakan pilih minggu terlebih dahulu');
+                        return;
+                    }
+                    url += `?jenis=mingguan&minggu=${minggu}`;
+                }
+
+                window.open(url, '_blank');
+                $('#modalFilterCetak').modal('hide');
+            });
+
+            function formatDateForWeekInput(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-W${getWeekNumber(date)}`;
             }
-            url += `?jenis=bulanan&bulan=${bulan}`;
-        } else {
-            const minggu = $('#minggu').val();
-            if (!minggu) {
-                alert('Silakan pilih minggu terlebih dahulu');
-                return;
+
+            function getWeekNumber(d) {
+                d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+                d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+                const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+                const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+                return weekNo < 10 ? '0' + weekNo : weekNo;
             }
-            url += `?jenis=mingguan&minggu=${minggu}`;
-        }
-
-        window.open(url, '_blank');
-        $('#modalFilterCetak').modal('hide');
-    });
-
-    function formatDateForWeekInput(date) {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}-W${getWeekNumber(date)}`;
-    }
-
-    function getWeekNumber(d) {
-        d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-        const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-        return weekNo < 10 ? '0' + weekNo : weekNo;
-    }
-});
+        });
     </script>
 @endpush
 
