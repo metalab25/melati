@@ -29,7 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/data-tamu/update-status/{id}', [BukuTamuController::class, 'updateStatus'])->name('buku-tamu.update-status');
     Route::get('/data-tamu/cetak', [BukuTamuController::class, 'cetak'])->name('buku-tamu.cetak');
     Route::get('/laporan-kunjungan', [LaporanKunjunganController::class, 'index'])->name('laporan.index');
+    Route::get('/laporan-kunjungan/cetak', [LaporanKunjunganController::class, 'cetak'])->name('laporan-kunjungan.cetak');
     Route::resource('/staf', StafController::class);
+
 });
 
 require __DIR__ . '/auth.php';

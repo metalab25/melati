@@ -32,7 +32,9 @@ class StafDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $action = '';
-                $action = '<button type="button" data-id=' . $row->id . ' data-jenis="edit" class="btn btn-warning btn-sm me-1 action"><i class="bi bi-pencil text-white"></i></button>';
+                $showUrl = route('staf.show', $row->id);
+                $action = '<a href="' . $showUrl . '" class="btn btn-info btn-sm me-1" title="Detail"><i class="text-white bi bi-eye-fill"></i></a>';
+                $action .= '<button type="button" data-id=' . $row->id . ' data-jenis="edit" class="btn btn-warning btn-sm me-1 action"><i class="text-white bi bi-pencil"></i></button>';
                 $action .= '<button type="button" data-id=' . $row->id . ' data-jenis="delete" class="btn btn-danger btn-sm action"><i class="bi bi-trash"></i></button>';
 
                 return $action;
@@ -80,7 +82,7 @@ class StafDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(100)
+                ->width(125)
                 ->addClass('text-center align-middle'),
         ];
     }

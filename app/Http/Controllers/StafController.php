@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\StafDataTable;
 use App\Helpers\imageHelper;
+use App\Models\BukuTamu;
 use App\Models\Staf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -56,10 +57,18 @@ class StafController extends Controller
             'staf' => $staf,
         ]);
     }
-
     public function show(Staf $staf)
     {
-        //
+        $recentVisitors = BukuTamu::where('id_staf', $staf->id)
+            ->orderBy('tgl_kunjungan', 'desc')
+            ->limit(7)
+            ->get();
+
+        return view('dashboard.staf.show', [
+            'title' => 'Detail Staff - ' . $staf->nama,
+            'staf' => $staf,
+            'recentVisitors' => $recentVisitors
+        ]);
     }
 
     public function edit(Staf $staf)

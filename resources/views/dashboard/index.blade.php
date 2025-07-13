@@ -76,7 +76,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-6">
-            <div class="card tryal-gradient border-0 mb-0 mb-sm-3">
+            <div class="mb-0 border-0 card tryal-gradient mb-sm-3">
                 <div class="card-body tryal row">
                     <div class="col-xl-7 col-sm-6">
                         <h2>SIMELATI - DINSOS NTB</h2>
@@ -133,10 +133,10 @@
         </div>
     </div>
 
-    <div class="card mb-0">
+    <div class="mb-0 card">
         <div class="card-body">
             <div class="table-responsive table-shadow rounded-3">
-                <table class="table table-striped table-bordered justify-content-center mb-0">
+                <table class="table mb-0 table-striped table-bordered justify-content-center">
                     <thead>
                         <tr>
                             <th class="text-center align-middle" width="2%">No.</th>
