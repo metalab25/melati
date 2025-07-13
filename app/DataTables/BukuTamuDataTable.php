@@ -27,9 +27,8 @@ class BukuTamuDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $action = '';
-                $action = '<button type="button" data-id=' . $row->id . ' data-jenis="edit" class="btn btn-warning btn-sm me-1 action"><i class="bi bi-pencil text-white"></i></button>';
                 if ($row->status === 0) {
-                    $action .= '<button type="button" data-id=' . $row->id . ' data-jenis="status" class="btn btn-success btn-sm me-1 action"><i class="bi bi-check2 text-white"></i></button>';
+                    $action = '<button type="button" data-id=' . $row->id . ' data-jenis="status" class="btn btn-success btn-sm me-1 action"><i class="bi bi-check2 text-white"></i></button>';
                 } elseif ($row->status === 1) {
                     $action .= '<button type="button" data-id=' . $row->id . ' data-jenis="status" class="btn btn-secondary btn-sm me-1 action"><i class="bi bi-check2 text-white"></i></button>';
                 }
@@ -79,7 +78,7 @@ class BukuTamuDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(120)
+                ->width(100)
                 ->addClass('text-center')->addClass('text-center align-middle'),
         ];
     }
