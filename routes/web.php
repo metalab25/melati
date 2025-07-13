@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebsiteController::class, 'index'])->name('website');
 Route::post('/buku-tamu', [BukuTamuController::class, 'store'])->name('buku-tamu.store');
 Route::get('/reaction/{token}', [ReactionController::class, 'show'])->name('reaction.show');
+Route::post('/reaction/{token}', [BukuTamuController::class, 'submitReaction'])->name('reaction.submit');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -27,7 +28,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/data-tamu', [BukuTamuController::class, 'storeAdmin'])->name('data-tamu.storeAdmin');
     Route::post('/data-tamu/update-status/{id}', [BukuTamuController::class, 'updateStatus'])->name('buku-tamu.update-status');
     Route::get('/data-tamu/cetak', [BukuTamuController::class, 'cetak'])->name('buku-tamu.cetak');
-    Route::post('/reaction/{token}', [BukuTamuController::class, 'submitReaction'])->name('reaction.submit');
     Route::get('/laporan-kunjungan', [LaporanKunjunganController::class, 'index'])->name('laporan.index');
     Route::resource('/staf', StafController::class);
 });
