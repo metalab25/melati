@@ -163,6 +163,7 @@
                                     {{ $item->staf->nama }}
                                 </td>
                                 <td class="text-center align-middle">
+                                    {{ \Carbon\Carbon::parse($item->tgl_kunjungan)->translatedFormat('d F Y H:i:s') }}
                                 </td>
                                 <td class="text-center align-middle">
                                     @if ($item->reaction == null)
