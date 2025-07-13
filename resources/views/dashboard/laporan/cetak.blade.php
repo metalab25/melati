@@ -11,10 +11,12 @@
         body {
             font-family: Arial, sans-serif !important;
         }
+
         .table> :not(caption)>*>* {
             padding: 0.5rem !important;
             font-size: 0.9em;
         }
+
         .app-copyright {
             position: fixed;
             bottom: 0;
@@ -23,30 +25,40 @@
             font-size: 0.95em;
             color: #ccc;
         }
+
         @media print {
             body {
                 -webkit-print-color-adjust: exact;
                 position: relative;
                 min-height: 100vh;
             }
+
             .container-fluid {
                 padding-bottom: 30px;
             }
+
             .no-print {
                 display: none;
             }
         }
+
         .header-laporan {
             text-align: center;
             margin-bottom: 20px;
         }
+
         .header-laporan img {
             height: 80px;
             margin-bottom: 10px;
         }
+
         .info-periode {
             margin-bottom: 15px;
             font-style: italic;
+        }
+
+        img.icon-raction {
+            width: 40px
         }
     </style>
 </head>
@@ -98,15 +110,20 @@
                             @if ($laporan->reaction == null)
                                 -
                             @elseif ($laporan->reaction == 1)
-                                <img src="{{ asset('assets/img/emoticon/sangat_tidak_puas.webp') }}" alt="" class="img-fluid icon-raction">
+                                <img src="{{ asset('assets/img/emoticon/sangat_tidak_puas.webp') }}" alt=""
+                                    class="img-fluid icon-raction">
                             @elseif ($laporan->reaction == 2)
-                                <img src="{{ asset('assets/img/emoticon/tidak_puas.webp') }}" alt="" class="img-fluid icon-raction">
+                                <img src="{{ asset('assets/img/emoticon/tidak_puas.webp') }}" alt=""
+                                    class="img-fluid icon-raction">
                             @elseif ($laporan->reaction == 3)
-                                <img src="{{ asset('assets/img/emoticon/baik.webp') }}" alt="" class="img-fluid icon-raction">
+                                <img src="{{ asset('assets/img/emoticon/baik.webp') }}" alt=""
+                                    class="img-fluid icon-raction">
                             @elseif ($laporan->reaction == 4)
-                                <img src="{{ asset('assets/img/emoticon/sangat_baik.webp') }}" alt="" class="img-fluid icon-raction">
+                                <img src="{{ asset('assets/img/emoticon/sangat_baik.webp') }}" alt=""
+                                    class="img-fluid icon-raction">
                             @elseif ($laporan->reaction == 5)
-                                <img src="{{ asset('assets/img/emoticon/puas.webp') }}" alt="" class="img-fluid icon-raction">
+                                <img src="{{ asset('assets/img/emoticon/puas.webp') }}" alt=""
+                                    class="img-fluid icon-raction">
                             @endif
                         </td>
                     </tr>
@@ -136,7 +153,8 @@
         </div> --}}
 
         <p class="text-xs text-center app-copyright">
-            Dokumen ini dicetak menggunakan aplikasi {{ config('app.name') }} pada {{ \Carbon\Carbon::now()->translatedFormat('d F Y H:i:s') }}
+            Dokumen ini dicetak menggunakan aplikasi {{ config('app.name') }} pada
+            {{ \Carbon\Carbon::now()->translatedFormat('d F Y H:i:s') }}
         </p>
     </div>
 </body>
