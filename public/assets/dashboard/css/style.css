@@ -1,0 +1,242 @@
+:root,
+[data-bs-theme=light] {
+    --bs-border-radius: 1.25rem;
+    --lte-sidebar-width: 18rem;;
+    --bs-border-radius-lg: 0.75rem;
+    --bs-border-color: #d0d1d2;
+}
+
+.app-content {
+    padding: 2rem 1rem;
+}
+
+.app-sidebar {
+    --lte-sidebar-menu-active-color: #886cc0;
+    --lte-sidebar-menu-active-bg: rgba(136, 108, 192, 0.1);;
+}
+
+.app-header .nav-link{
+    height: 3.8rem;
+    line-height: 3.8rem;
+}
+.app-header .nav-link.title {
+    font-size: 1.5em;
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+}
+
+.sidebar-brand {
+    height: auto;
+}
+
+.sidebar-menu .nav-link {
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav {
+    --bs-nav-link-padding-y: 0.75rem;
+}
+
+.sidebar-wrapper .sidebar-menu>.nav-item.menu-open>.nav-link,
+.sidebar-wrapper .sidebar-menu>.nav-item:hover>.nav-link,
+.sidebar-wrapper .sidebar-menu>.nav-item>.nav-link:focus {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.sidebar-wrapper .sidebar-menu>.nav-item>.nav-link.active:not(:hover) {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.sidebar-wrapper .sidebar-menu>.nav-item>.nav-link.active::before {
+    position: absolute;
+    content: "";
+    background: #886CC0;
+    width: 0.563rem;
+    height: 100%;
+    top: 0;
+    left: 0rem;
+    border-top-right-radius: 3.563rem;
+    border-bottom-right-radius: 3.563rem;
+    -webkit-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.sidebar-menu .nav-link a {
+    color: #886cc0;
+}
+
+.sidebar-brand .brand-link .brand-image {
+    max-height: 50px;
+}
+
+.btn {
+    --bs-btn-padding-x: 1rem;
+}
+
+.btn-sm,
+.btn-group-sm>.btn {
+    --bs-btn-padding-x: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.btn.btn-primary {
+    background-color: #886CC0;
+    border-color: #886CC0;
+}
+.btn.btn-primary:hover {
+    background-color: #6139b2;
+    border-color: #6139b2;
+}
+
+
+.tryal-gradient {
+    background: #886cc0;
+    position: relative;
+}
+
+.tryal-gradient:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.52) 100%);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.52) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#85ffffff', GradientType=0);
+    border-radius: 1.25rem;
+}
+
+.small-box {
+    border-radius: 1.25rem;
+}
+
+.small-box>.inner {
+    padding: 20px;
+}
+
+.small-box .small-box-icon {
+    height: 100px;
+    font-size: 100px;
+}
+
+.small-box>.small-box-footer {
+    border-bottom-left-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+}
+
+div.dt-container div.dt-length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 0.95em;
+}
+
+div.dt-container div.dt-info {
+    font-size: 0.95em;
+}
+
+table.dataTable {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+}
+
+.dataTables_length {
+    margin-bottom: 0.25rem;
+}
+
+table.dataTable thead>tr>th div.dt-column-header span.dt-column-title,
+table.dataTable thead>tr>th div.dt-column-footer span.dt-column-title,
+table.dataTable thead>tr>td div.dt-column-header span.dt-column-title,
+table.dataTable thead>tr>td div.dt-column-footer span.dt-column-title,
+table.dataTable tfoot>tr>th div.dt-column-header span.dt-column-title,
+table.dataTable tfoot>tr>th div.dt-column-footer span.dt-column-title,
+table.dataTable tfoot>tr>td div.dt-column-header span.dt-column-title,
+table.dataTable tfoot>tr>td div.dt-column-footer span.dt-column-title {
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+}
+
+table.dataTable th,
+table.dataTable td {
+    box-sizing: border-box;
+    font-size: 0.857em;
+}
+
+.pagination {
+    --bs-pagination-padding-x: 0.875rem;
+}
+
+.page-item .page-link {
+    margin-right: 5px;
+}
+
+/* Toast Bootstarp */
+.toast {
+    --bs-toast-border-radius: 0.65rem;
+    ;
+}
+
+.toast-custom {
+    background-color: #fff !important;
+}
+
+.toast-custom .toast-body {
+    color: #212529;
+    font-size: 0.9em;
+}
+
+.toast-custom.bg-success .toast-body {
+    color: #198754;
+}
+
+.toast-custom.bg-success .toast-header .bi {
+    color: #198754;
+}
+
+.toast-custom.bg-warning .toast-body {
+    color: #f77a05;
+}
+
+.toast-custom.bg-warning .toast-header .bi {
+    color: #f77a05;
+}
+
+.toast-custom.bg-danger .toast-body {
+    color: #dc3545;
+}
+
+.toast-custom.bg-danger .toast-header .bi {
+    color: #dc3545;
+}
+
+.toast-custom.bg-info .toast-body {
+    color: #35bbdc;
+}
+
+.toast-custom.bg-info .toast-header .bi {
+    color: #35bbdc;
+}
+
+.table-shadow {
+    box-shadow: 0px 0px 1px rgb(0 0 0 / 61%) !important;
+}
+
+img.avatar {
+    display: block;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.avatar.avatar-sm {
+    width: 50px;
+    height: 50px;
+}
+
+/* End Toast Bootstrap */
